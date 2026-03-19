@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aparajita Deb · Interactive Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080b0f;--surface:#111620;--border:rgba(180,155,100,0.1);--border2:rgba(180,155,100,0.22);--gold:#c9a96e;--gold2:#e8cc9a;--gold3:rgba(201,169,110,0.12);--text:#f0ece4;--muted:#8a8a7a;--soft:#4a4a3a;--blue:#5b9cf6;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.bg-layer{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-layer::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(120,90,40,0.06) 0%,transparent 70%);top:-200px;left:-150px;}
+.bg-layer::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(50,80,150,0.05) 0%,transparent 70%);bottom:-100px;right:-100px;}
+.page{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3rem 2rem 4rem;}
+.main-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+@media(max-width:620px){.main-grid{grid-template-columns:1fr;gap:2rem}}
+/* LEFT */
+.left{display:flex;flex-direction:column;gap:1.2rem;}
+.eyebrow{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);opacity:0.7;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--gold);opacity:0.5}
+.hero-name{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:400;line-height:1.05;color:var(--gold2);font-style:italic;}
+.hero-name em{font-style:italic;color:var(--gold2)}
+.hero-title{font-size:0.82rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:300px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.9rem;}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--gold2);line-height:1;}
+.stat-lbl{font-size:0.6rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;margin-top:2px}
+.contacts{display:flex;flex-direction:column;gap:7px;}
+.cc{display:flex;align-items:center;gap:7px;font-size:0.73rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.cc:hover{color:var(--gold)}
+.cc svg{opacity:0.55;flex-shrink:0}
+/* RIGHT */
+.right{display:flex;flex-direction:column;align-items:center;gap:1rem;position:sticky;top:2rem;}
+.orb-outer{position:relative;width:160px;height:160px;cursor:pointer;}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(201,169,110,0.08);animation:ringPulse 4s ease-in-out infinite}
+.ring1{inset:-14px}.ring2{inset:-28px;border-color:rgba(201,169,110,0.04);animation-delay:1s}
+.orb{width:160px;height:160px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#1a1a28,var(--bg));border:1.5px solid rgba(201,169,110,0.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;transition:all 0.4s;}
+.av{width:68px;height:68px;border-radius:50%;background:var(--gold3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold2);transition:all 0.4s;}
+.wbars{display:flex;gap:3px;align-items:flex-end;height:18px;opacity:0;transition:opacity 0.3s}
+.wb{width:3px;border-radius:2px;background:var(--gold);height:4px;transition:height 0.1s}
+.orb.listening{border-color:rgba(201,169,110,0.6);box-shadow:0 0 50px rgba(201,169,110,0.1)}
+.orb.listening .av{background:rgba(201,169,110,0.2)}.orb.listening .wbars{opacity:1}
+.orb.speaking{border-color:rgba(91,156,246,0.5);box-shadow:0 0 50px rgba(91,156,246,0.1)}
+.orb.speaking .av{background:rgba(91,156,246,0.15);color:#93c5fd}.orb.speaking .wbars{opacity:1}.orb.speaking .wb{background:#5b9cf6}
+.orb.thinking .av{animation:thinkPulse 1.2s ease-in-out infinite}
+.orb-hint{font-size:0.64rem;color:var(--soft);text-align:center;line-height:1.5;}
+.st{font-size:0.74rem;color:var(--soft);text-align:center;min-height:16px;transition:color 0.3s;}
+.st.on{color:var(--gold)}.st.spk{color:var(--blue)}
+.ctrls{display:flex;align-items:center;gap:10px;}
+.micbtn{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(201,169,110,0.25);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gold);transition:all 0.2s;}
+.micbtn:hover{border-color:rgba(201,169,110,0.6);background:var(--gold3)}
+.micbtn.on{border-color:var(--gold);background:var(--gold3);}
+.stopbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,100,100,0.25);background:transparent;cursor:pointer;display:none;align-items:center;justify-content:center;}
+.stopsq{width:12px;height:12px;background:#ff7070;border-radius:2px}
+.tbox{width:100%;background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.1rem;display:none;}
+.tlbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin-bottom:6px}
+.tbody{font-size:0.82rem;color:#b0a898;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.sdiv{display:flex;align-items:center;gap:0.8rem;width:100%;}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--border)}
+.sdiv span{font-size:0.58rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--soft);white-space:nowrap}
+.qgrid{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;width:100%;}
+.q{background:transparent;border:1px solid rgba(201,169,110,0.2);color:rgba(201,169,110,0.75);font-size:0.7rem;padding:6px 13px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.q:hover{background:var(--gold3);border-color:rgba(201,169,110,0.5);color:var(--gold2);}
+.q:disabled{opacity:0.3;cursor:not-allowed;}
+@keyframes ringPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes thinkPulse{0%,100%{opacity:0.3}50%{opacity:1}}
+@media(max-width:600px){.page{padding:2rem 1.2rem 3rem}.hero-name{font-size:2.2rem}.orb-outer,.orb{width:140px;height:140px}.av{width:60px;height:60px}}
+</style>
+</head>
+<body>
+<div class="bg-layer"></div>
+<div class="page">
+  <div class="main-grid">
+    <!-- LEFT -->
+    <div class="left">
+      <div class="eyebrow">Interactive Resume · AI Voice</div>
+      <div class="hero-name">Aparajita Deb</div>
+      <div class="hero-title">IT Business Development &amp; Client Success Leader · Driving growth across fintech, SaaS &amp; digital products</div>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">3+</div><div class="stat-lbl">Years Experience</div></div>
+        <div class="stat"><div class="stat-num">50%</div><div class="stat-lbl">Client Growth</div></div>
+        <div class="stat"><div class="stat-num">150K+</div><div class="stat-lbl">QR Onboardings</div></div>
+        <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">Revenue Increase</div></div>
+      </div>
+      <div class="contacts">
+        <a class="cc" href="/cdn-cgi/l/email-protection#1475647566757e7d60757071762d20547379757d783a777b79"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="__cf_email__" data-cfemail="1d7c6d7c6f7c7774697c79787f24295d7a707c7471337e7270">[email&#160;protected]</span></a>
+        <a class="cc" href="https://linkedin.com/in/aparajita-deb" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>linkedin.com/in/aparajita-deb</a>
+        <a class="cc" href="tel:+918453925377"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.72 6.72l.61-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91-8453925377</a>
+        <a class="cc" href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chennai, Tamil Nadu, India</a>
+      </div>
+    </div>
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="orb-outer" id="orbwrap">
+        <div class="ring ring1"></div><div class="ring ring2"></div>
+        <div class="orb" id="orb"><div class="av">AD</div><div class="wbars" id="wbars"></div></div>
+      </div>
+      <div class="orb-hint">Tap to speak with Aparajita's AI</div>
+      <div class="st" id="st">Ask me anything</div>
+      <div class="ctrls">
+        <button class="micbtn" id="micbtn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></button>
+        <button class="stopbtn" id="stopbtn"><div class="stopsq"></div></button>
+      </div>
+      <div class="tbox" id="tbox"><div class="tlbl">Conversation</div><div class="tbody" id="tbody"></div></div>
+      <div class="sdiv"><span>Ask me</span></div>
+      <div class="qgrid">
+        <button class="q" id="q1">Tell me about yourself</button>
+        <button class="q" id="q2">Achievements at Getepay?</button>
+        <button class="q" id="q3">Products launched?</button>
+        <button class="q" id="q4">Strongest skills?</button>
+        <button class="q" id="q5">Key projects?</button>
+        <button class="q" id="q6">Certifications?</button>
+        <button class="q" id="q7">Role you want?</button>
+        <button class="q" id="q8">Education?</button>
+        <button class="q" id="q9">Tools you use?</button>
+        <button class="q" id="q10">Project delivery?</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+(function(){
+var GK='AIzaSyCi2QWcxHufRegTAKN1YIvH84-QTORj0Q4';
+var RES='APARAJITA DEB. Chennai, Tamil Nadu, India. Phone: +91-8453925377. Email: aparajitadeb94@gmail.com. LinkedIn: linkedin.com/in/aparajita-deb. SUMMARY: Results-driven IT Business Development and Client Success Leader with 3 plus years of experience. Scaled institutional client acquisition by 50 percent, increased upsell revenue by 40 percent, onboarded 150000 plus merchant QR codes across 4000 plus branches. EXPERIENCE: 1. Senior Business Development Manager at Team Tweaks Technology Chennai December 2025 to Present. Full-cycle business development, lead generation, consultative selling, RFP, contract negotiation, deal closure for mobile and web app development. Owns post-sales project lifecycle: requirement gathering, scope finalization, milestone tracking, risk management, change requests, deployment, post-launch support. Single point of contact bridging clients with UI UX Development QA DevOps. Delivered 4 digital product launches: Mealhood multi-vendor food delivery, Hanioo interpreter booking, Blumberr digital healthcare, BAFL bulk grocery. 2. Relationship Manager Enterprise Fintech Sales at Getepay June 2023 to November 2025. 50 percent increase in institutional client acquisition across nationalized private and cooperative banks. Managed partnerships with UCO Bank, Bandhan Bank, Axis Bank, ICICI Bank and state cooperative banks across Northeast India. 40 percent revenue increase through upselling and cross-selling. Coordinated onboarding of 150000 plus merchant QR codes and POS devices across 4000 plus bank branches in 8 months. Key projects: UCO Bank digital payment deployment across regional branches and Bali Yatra large-scale event-based digital payment enablement with on-ground coordination. SKILLS: Enterprise Sales, Consultative Selling, Lead Generation, Proposal Writing, Contract Negotiation, RFP Management, Client Acquisition, Upselling, Cross-selling, End-to-End Project Lifecycle, SDLC, Agile Scrum, Milestone Tracking, Risk Management, Change Management, Stakeholder Management, Mobile App Development iOS Android, Web Applications, SaaS, Digital Payments UPI QR POS, Fintech, Cloud Platforms, Microsoft Excel Advanced, Power BI, Python Basics, JIRA, CRM Systems. EDUCATION: MBA Gauhati Commerce College Guwahati Assam November 2021 to November 2023. PG Diploma Computer Applications CEC Cotton Education College Guwahati May 2022 to May 2023. BBA Human Resources Management Gauhati Commerce College 2017 to 2020. CERTIFICATIONS: PRINCE2 Basic Project Management Methodology, Certified Project Professional CPM, Business Analysis Certification, Power BI Data Visualization, Advanced Excel Workshop. CAREER GOALS: I am interested in moving into a more strategic and leadership-oriented role, where I can not only drive business development but also contribute to product decisions and overall growth. I would also like to be involved in end-to-end project ownership.';
+var SYS='You are a voice AI representing Aparajita Deb. You ARE Aparajita speaking in first person to a recruiter or professional visitor. This is a voice conversation so keep every answer to 2 to 3 short natural spoken sentences only. No bullet points, no lists, no markdown, no asterisks. Be warm, confident and professional. Answer only from the resume. IMPORTANT: When asked what kind of role you are looking for or about career goals, answer exactly: I am interested in moving into a more strategic and leadership-oriented role, where I can not only drive business development but also contribute to product decisions and overall growth. I would also like to be involved in end-to-end project ownership. Resume: '+RES;
+var ch=[],spk=false,lst=false,rec=null,bars=[],bt=null;
+var hasSR=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+var hasSY=!!window.speechSynthesis;
+var orbEl=document.getElementById('orb'),stEl=document.getElementById('st'),tbEl=document.getElementById('tbody'),txEl=document.getElementById('tbox'),mbEl=document.getElementById('micbtn'),sbEl=document.getElementById('stopbtn'),wbEl=document.getElementById('wbars');
+for(var i=0;i<9;i++){var b=document.createElement('div');b.className='wb';wbEl.appendChild(b);bars.push(b);}
+function aB(on){clearInterval(bt);if(!on){bars.forEach(function(x){x.style.height='4px';});return;}bt=setInterval(function(){bars.forEach(function(x){x.style.height=(Math.random()*18+4)+'px';});},120);}
+function sO(s){orbEl.className='orb'+(s?' '+s:'');aB(s==='listening'||s==='speaking');}
+function sS(t,c){stEl.textContent=t;stEl.className='st'+(c?' '+c:'');}
+function sT(t){tbEl.textContent=t;txEl.style.display=t?'block':'none';}
+function dQ(d){document.querySelectorAll('.q').forEach(function(x){x.disabled=d;});}
+function callAI(txt){
+  dQ(true);sO('thinking');sS('Thinking...');
+  ch.push({role:'user',parts:[{text:txt}]});
+  if(ch.length>16)ch=ch.slice(-16);
+  var k=localStorage.getItem('apgk')||GK;
+  var xhr=new XMLHttpRequest();
+  xhr.open('POST','https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+k,true);
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.onload=function(){
+    try{
+      var d=JSON.parse(xhr.responseText);
+      if(d.error){dQ(false);sO(null);sS('Error - try again');sT('API Error: '+d.error.message);return;}
+      var rep=d.candidates[0].content.parts[0].text;
+      ch.push({role:'model',parts:[{text:rep}]});
+      sayIt(rep,txt);
+    }catch(e){dQ(false);sO(null);sS('Error - try again');}
+  };
+  xhr.onerror=function(){dQ(false);sO(null);sS('Network error - try again');};
+  xhr.send(JSON.stringify({system_instruction:{parts:[{text:SYS}]},contents:ch,generationConfig:{maxOutputTokens:150,temperature:0.75}}));
+}
+function sayIt(text,q){
+  var clean=text.replace(/[*_#`]/g,'').replace(/\n+/g,' ').trim();
+  sT('You: '+q+'\n\nAparajita: '+clean);
+  dQ(false);
+  if(!hasSY){sO(null);sS('Ask me anything');return;}
+  speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(clean);
+  var vs=speechSynthesis.getVoices();
+  var v=null;
+  for(var i=0;i<vs.length;i++){if(vs[i].name.indexOf('Samantha')>-1||vs[i].name.indexOf('Karen')>-1||vs[i].name.indexOf('Google UK English Female')>-1||vs[i].name.indexOf('Microsoft Zira')>-1){v=vs[i];break;}}
+  if(!v)for(var j=0;j<vs.length;j++){if(vs[j].lang.indexOf('en')===0){v=vs[j];break;}}
+  if(v)u.voice=v;u.rate=1.0;u.pitch=1.0;u.volume=1;
+  u.onstart=function(){spk=true;sO('speaking');sS('Speaking...','spk');sbEl.style.display='flex';};
+  u.onend=u.onerror=function(){spk=false;sbEl.style.display='none';sO(null);sS('Ask me anything');};
+  speechSynthesis.speak(u);
+}
+function doListen(){
+  if(spk){doStop();return;}
+  if(lst){if(rec)rec.stop();sO(null);sS('Ask me anything');return;}
+  if(!hasSR){sS('Use the buttons below');return;}
+  if(!rec){
+    var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    rec=new SR();rec.lang='en-US';rec.interimResults=true;rec.continuous=false;
+    rec.onstart=function(){lst=true;sO('listening');sS('Listening...','on');mbEl.classList.add('on');};
+    rec.onresult=function(e){var fi='';for(var r=0;r<e.results.length;r++){if(e.results[r].isFinal)fi+=e.results[r][0].transcript;}if(fi){sT('You: '+fi);rec.stop();callAI(fi);}};
+    rec.onerror=function(e){doStop();sS(e.error==='not-allowed'?'Mic blocked - allow in browser':'Tap to try again');};
+    rec.onend=function(){lst=false;mbEl.classList.remove('on');if(!spk)sO(null);};
+  }
+  try{rec.start();}catch(e){sS('Tap to try again');}
+}
+function doStop(){
+  if(hasSY)speechSynthesis.cancel();
+  if(rec&&lst)try{rec.stop();}catch(e){}
+  spk=false;lst=false;sbEl.style.display='none';mbEl.classList.remove('on');
+  dQ(false);sO(null);sS('Ask me anything');
+}
+var qmap={
+  q1:'Tell me about yourself and your professional background',
+  q2:'What were your biggest achievements at Getepay?',
+  q3:'What digital products did you launch at Team Tweaks?',
+  q4:'What are your strongest skills and areas of expertise?',
+  q5:'Tell me about the UCO Bank and Bali Yatra projects',
+  q6:'What certifications do you hold?',
+  q7:'What kind of role are you looking for next?',
+  q8:'Tell me about your education and academic background',
+  q9:'What tools and platforms do you work with?',
+  q10:'How do you handle end to end project delivery?'
+};
+Object.keys(qmap).forEach(function(id){
+  var el=document.getElementById(id);
+  if(el){el.onclick=function(){sT('You: '+qmap[id]);callAI(qmap[id]);};}
+});
+document.getElementById('orbwrap').onclick=function(){doListen();};
+document.getElementById('micbtn').onclick=function(){doListen();};
+docum
