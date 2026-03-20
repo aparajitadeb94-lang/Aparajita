@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aparajita Deb — Senior BDM | Key Account Manager | Project Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090d;--s1:#0d1117;--s2:#131920;--s3:#192028;
+  --b1:#1c2530;--b2:#253545;
+  --gold:#c9a84c;--g2:#e8c97a;--g3:#f5e4a8;
+  --gdim:#c9a84c16;--gdim2:#c9a84c2e;
+  --tx:#e2dac8;--tx2:#8e9aa6;--tx3:#4e5e6a;
+  --teal:#3bbdad;--white:#eeeae0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--tx);font-family:'Outfit',sans-serif;line-height:1.6}
+
+/* ONE-PAGER LAYOUT */
+.page{display:grid;grid-template-rows:56px 1fr;height:100vh;overflow:hidden}
+.main{display:grid;grid-template-columns:330px 1fr;overflow:hidden}
+
+/* NAV */
+nav{background:var(--s1);border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:50}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--g2);letter-spacing:.5px}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-link{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;font-size:11px;font-weight:500;border:1px solid var(--b2);color:var(--tx2);text-decoration:none;background:transparent;transition:all .2s;white-space:nowrap}
+.nav-link:hover{border-color:var(--gold);color:var(--g2);background:var(--gdim)}
+.nav-link svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
+.nav-dl{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--gold);color:#07090d;text-decoration:none;transition:all .2s}
+.nav-dl:hover{background:var(--g2)}
+.nav-dl svg{width:13px;height:13px;fill:currentColor}
+
+/* LEFT PANEL */
+.left{background:var(--s1);border-right:1px solid var(--b1);display:flex;flex-direction:column;overflow:hidden;padding:24px 22px 18px;position:relative}
+.left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 50% at 50% 0%,#c9a84c0c 0%,transparent 65%);pointer-events:none}
+
+/* name */
+.eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--gold);flex-shrink:0}
+.bigname{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;line-height:.92;letter-spacing:-1px;color:var(--white)}
+.bigname em{display:block;font-style:italic;color:var(--g2)}
+.role-line{font-size:10.5px;color:var(--tx3);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;line-height:1.7}
+
+/* open for roles */
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0}
+.chip-r{background:var(--gdim);border:1px solid var(--gdim2);color:var(--g2);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px}
+
+/* tagline */
+.tagline{font-size:12px;color:var(--tx2);line-height:1.75;padding:12px 14px;border-left:2px solid var(--gold);background:var(--gdim);margin-bottom:12px}
+
+/* metrics */
+.mets{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b1);margin-bottom:14px}
+.met{background:var(--s1);padding:10px 12px;text-align:center}
+.mn{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--g2);line-height:1}
+.ml{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);margin-top:2px}
+.ms{font-size:10px;color:var(--teal);margin-top:1px}
+
+/* contact links in sidebar */
+.clinks{display:flex;flex-direction:column;gap:5px;margin-top:auto}
+.clink{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--b2);background:var(--s2);color:var(--tx2);text-decoration:none;font-size:11.5px;transition:all .2s}
+.clink:hover{border-color:var(--gold);color:var(--g2);background:var(--gdim)}
+.clink svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
+.clink-inner{display:flex;flex-direction:column;line-height:1.3}
+.clink-hint{font-size:9px;color:var(--tx3);letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+
+/* RIGHT PANEL */
+.right{display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+.right-head{padding:20px 28px 14px;flex-shrink:0}
+.rh-ey{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rh-ey::before{content:'';width:18px;height:1px;background:var(--gold)}
+.rh-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--white);line-height:1.1}
+.rh-h em{font-style:italic;color:var(--g2)}
+.rh-sub{font-size:11.5px;color:var(--tx2);margin-top:3px}
+
+/* CARDS GRID — fills remaining height */
+.grid{flex:1;padding:0 28px 20px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3px;background:var(--b1);overflow:hidden}
+.card{background:var(--bg);padding:20px 18px 34px;cursor:pointer;position:relative;overflow:hidden;transition:background .25s,transform .15s;display:flex;flex-direction:column;user-select:none}
+.card:hover{background:var(--s3);transform:translateY(-1px)}
+.card:active{transform:scale(.99)}
+.card::before{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .35s}
+.card:hover::before{height:100%}
+.card-ico{font-size:22px;margin-bottom:9px;display:block;transition:transform .25s}
+.card:hover .card-ico{transform:scale(1.1)}
+.card-tag{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:5px}
+.card-t{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.15}
+.card-d{font-size:11px;color:var(--tx2);line-height:1.6;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.ctag{background:var(--gdim);border:1px solid var(--gdim2);color:var(--gold);font-family:'DM Mono',monospace;font-size:7.5px;letter-spacing:1px;text-transform:uppercase;padding:3px 7px}
+.card-arr{position:absolute;bottom:12px;right:14px;font-size:15px;color:var(--tx3);transition:all .25s}
+.card:hover .card-arr{color:var(--gold);transform:translateX(3px)}
+
+/* MODAL OVERLAY */
+.overlay{position:fixed;inset:0;z-index:9999;background:#000000b8;backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.overlay.active{opacity:1;pointer-events:all}
+.modal{background:var(--s1);border:1px solid var(--b2);border-top:2px solid var(--gold);width:100%;max-width:860px;max-height:88vh;overflow-y:auto;transform:translateY(36px) scale(.97);transition:transform .38s cubic-bezier(.16,1,.3,1);box-shadow:0 40px 100px #00000099,0 0 0 1px #c9a84c1a}
+.overlay.active .modal{transform:translateY(0) scale(1)}
+.modal::-webkit-scrollbar{width:3px}
+.modal::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* Modal header */
+.mh{display:flex;align-items:center;justify-content:space-between;padding:26px 36px 20px;border-bottom:1px solid var(--b1);position:sticky;top:0;background:var(--s1);z-index:10}
+.mh-left{display:flex;align-items:center;gap:14px}
+.mh-ico{font-size:32px}
+.mh-ey{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:3px}
+.mh-ti{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--white);line-height:1}
+.m-close{width:38px;height:38px;background:var(--s2);border:1px solid var(--b2);color:var(--tx2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:all .2s;font-family:'Outfit',sans-serif}
+.m-close:hover{background:var(--gold);color:#07090d;border-color:var(--gold)}
+
+/* Modal body */
+.mb{padding:28px 36px 44px}
+.mb>p{font-size:14.5px;color:var(--tx2);line-height:1.85;margin-bottom:14px}
+.mb strong{color:var(--g3);font-weight:600}
+.mb h3{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;color:var(--white);margin:26px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--b1)}
+.mb h3:first-child{margin-top:0}
+.mb ul{list-style:none;margin:4px 0 16px}
+.mb ul li{padding:8px 0 8px 20px;position:relative;font-size:14px;color:var(--tx2);line-height:1.65;border-bottom:1px solid var(--b1)}
+.mb ul li:last-child{border-bottom:none}
+.mb ul li::before{content:'▸';position:absolute;left:0;color:var(--gold);font-size:9px;top:11px}
+
+/* job block */
+.jb{background:var(--s2);border:1px solid var(--b2);padding:20px 22px;margin-bottom:16px;position:relative;overflow:hidden}
+.jb::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.jbadge{display:inline-flex;align-items:center;gap:5px;background:var(--gdim);border:1px solid var(--gold);color:var(--g2);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;margin-bottom:8px}
+.ibadge{background:#3bbdad14;border-color:var(--teal);color:var(--teal)}
+.jdate{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:4px}
+.jb h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:2px}
+.jco{font-size:12px;color:var(--teal);font-weight:600;margin-bottom:10px}
+.jtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.jtag{background:var(--gdim);border:1px solid var(--gdim2);color:var(--g2);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:4px 9px}
+.ptable{margin-top:12px;border:1px solid var(--b1);background:var(--bg);padding:2px 14px}
+.prow{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--b1);font-size:13px}
+.prow:last-child{border-bottom:none}
+.pname{color:var(--white);font-weight:600;min-width:110px;flex-shrink:0}
+.pdesc{color:var(--tx2);line-height:1.5}
+
+/* why hire me grid */
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.wi{background:var(--s2);border:1px solid var(--b2);padding:18px;position:relative;transition:border-color .2s}
+.wi:hover{border-color:var(--gold)}
+.wnum{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--gold);opacity:.09;position:absolute;top:6px;right:10px;line-height:1}
+.wico{font-size:18px;margin-bottom:7px;display:block}
+.wi h4{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.2}
+.wi p{font-size:12.5px;color:var(--tx2);line-height:1.6;margin:0}
+
+/* skill bars */
+.sbar{margin-bottom:11px}
+.sbt{display:flex;justify-content:space-between;font-size:12.5px;color:var(--tx);margin-bottom:4px}
+.sbp{font-family:'DM Mono',monospace;font-size:9px;color:var(--tx3)}
+.sbtr{height:2px;background:var(--b2);border-radius:2px;overflow:hidden}
+.sbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--g2));border-radius:2px}
+.ccloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ch{background:var(--s2);border:1px solid var(--b2);color:var(--tx2);font-size:11.5px;padding:5px 12px;transition:all .2s}
+.ch:hover{border-color:var(--gold);color:var(--g2)}
+
+/* edu card */
+.ec{background:var(--s2);border:1px solid var(--b2);padding:16px 18px;margin-bottom:10px;position:relative;overflow:hidden}
+.ec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.ecy{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;display:block}
+.ec h4{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:4px}
+.ec p{font-size:13px;color:var(--tx2);margin:0;line-height:1.65}
+
+/* cert item */
+.ci{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;margin-bottom:8px;background:var(--s2);border:1px solid var(--b2);transition:border-color .2s}
+.ci:hover{border-color:var(--gold)}
+.cico{font-size:20px;flex-shrink:0;margin-top:1px}
+.ci-text{font-size:13px;color:var(--tx2);line-height:1.65;margin-top:3px;display:block}
+
+/* cover */
+.cvbox{background:var(--s2);border:1px solid var(--b2);padding:30px 34px;position:relative;overflow:hidden}
+.cvbox::before{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:110px;color:var(--gold);opacity:.06;position:absolute;top:-12px;left:14px;line-height:1;pointer-events:none}
+.cvbox p{font-size:15px;color:var(--tx2);line-height:1.9;margin-bottom:16px;position:relative;z-index:1}
+.cvsig{font-family:'Cormorant Garamond',serif;font-size:26px;font-style:italic;color:var(--g2);margin-top:20px}
+
+/* MOBILE */
+@media(max-width:780px){
+  html,body{overflow:auto;height:auto}
+  .page{height:auto;overflow:visible;grid-template-rows:auto}
+  .main{grid-template-columns:1fr;overflow:visible}
+  .left{overflow:visible;min-height:auto}
+  .right{overflow:visible}
+  .grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;overflow:visible;height:auto;padding-bottom:16px;flex:none}
+  nav{flex-wrap:wrap;height:auto;padding:10px 14px;gap:6px}
+  .nav-right{flex-wrap:wrap;gap:5px}
+}
+@media(max-width:480px){
+  .grid{grid-template-columns:1fr}
+  .wgrid{grid-template-columns:1fr}
+  .mh{padding:16px 16px 12px}
+  .mb{padding:16px 16px 28px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-name">Aparajita Deb</div>
+    <div class="nav-right">
+      <a href="tel:+918453925377" class="nav-link">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        +91 84539 25377
+      </a>
+      <a href="mailto:aparajitadeb94@gmail.com" class="nav-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        aparajitadeb94@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/aparajita-deb" target="_blank" rel="noopener" class="nav-link">
+        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://aparajitadeb94-lang.github.io/Aparajita/Aparajita%20Professional%20Resume.pdf" target="_blank" rel="noopener" class="nav-dl">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- LEFT PANEL -->
+    <div class="left">
+      <div class="eyebrow">Chennai, India &nbsp;·&nbsp; Open to Work</div>
+      <div class="bigname">Aparajita<em>Deb</em></div>
+      <div class="role-line">Business Development · Key Account Mgmt<br>Project Management · Team Leadership</div>
+      <div class="chips">
+        <span class="chip-r">Senior BDM</span>
+        <span class="chip-r">Key Account Manager</span>
+        <span class="chip-r">Project Manager</span>
+        <span class="chip-r">Project Coordinator</span>
+      </div>
+      <div class="tagline">I lead teams, drive revenue, and own delivery end‑to‑end. 3+ years building enterprise relationships &amp; managing cross-functional teams in IT &amp; fintech.</div>
+      <div class="mets">
+        <div class="met"><div class="mn">50%</div><div class="ml">Client Growth</div><div class="ms">at Getepay</div></div>
+        <div class="met"><div class="mn">40%</div><div class="ml">Revenue Uplift</div><div class="ms">Upsell/Cross-sell</div></div>
+        <div class="met"><div class="mn">1.5L+</div><div class="ml">Merchants</div><div class="ms">in 8 months</div></div>
+        <div class="met"><div class="mn">30+</div><div class="ml">Banking Clients</div><div class="ms">Enterprise managed</div></div>
+        <div class="met"><div class="mn">10+</div><div class="ml">Projects Done</div><div class="ms">End-to-end owned</div></div>
+        <div class="met"><div class="mn">3+</div><div class="ml">Yrs Experience</div><div class="ms">IT &amp; Fintech</div></div>
+      </div>
+      <div class="clinks">
+        <a href="tel:+918453925377" class="clink">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          <div class="clink-inner"><span>+91 84539 25377</span><span class="clink-hint">Tap to Call</span></div>
+        </a>
+        <a href="mailto:aparajitadeb94@gmail.com" class="clink">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <div class="clink-inner"><span>aparajitadeb94@gmail.com</span><span class="clink-hint">Click to Email</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/aparajita-deb" target="_blank" rel="noopener" class="clink">
+          <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          <div class="clink-inner"><span>linkedin.com/in/aparajita-deb</span><span class="clink-hint">Open LinkedIn</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right">
+      <div class="right-head">
+        <div class="rh-ey">Interactive Profile</div>
+        <div class="rh-h">Click any card to <em>explore in full</em></div>
+        <div class="rh-sub">👆 Each card opens a detailed pop-up with full descriptions, projects, and achievements</div>
+      </div>
+      <div class="grid">
+
+        <div class="card" data-modal="why">
+          <span class="card-ico">🎯</span>
+          <div class="card-tag">01 · Case for Hire</div>
+          <div class="card-t">Why Hire Me</div>
+          <div class="card-d">10 evidence-backed reasons with real revenue numbers, team leadership proof, and delivery outcomes — written for big software company recruiters.</div>
+          <div class="card-tags"><span class="ctag">+50% Revenue</span><span class="ctag">Team Leader</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+        <div class="card" data-modal="exp">
+          <span class="card-ico">💼</span>
+          <div class="card-tag">02 · Career</div>
+          <div class="card-t">Experience</div>
+          <div class="card-d">3+ years professional experience in IT services & fintech — leading cross-functional teams, managing 30+ enterprise banking accounts, and delivering end-to-end projects.</div>
+          <div class="card-tags"><span class="ctag">IT Services</span><span class="ctag">Fintech</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+        <div class="card" data-modal="skills">
+          <span class="card-ico">⚡</span>
+          <div class="card-tag">03 · Competencies</div>
+          <div class="card-t">Skills & Expertise</div>
+          <div class="card-d">Cross-functional team leadership, Power BI, Scrum Master, SDLC, enterprise consultative selling, and project management — all in one profile.</div>
+          <div class="card-tags"><span class="ctag">Team Leadership</span><span class="ctag">Scrum</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+        <div class="card" data-modal="edu">
+          <span class="card-ico">🎓</span>
+          <div class="card-tag">04 · Academic</div>
+          <div class="card-t">Education</div>
+          <div class="card-d">MBA · PG Diploma in Computer Applications · BBA — a strong academic foundation where business strategy meets technical fluency.</div>
+          <div class="card-tags"><span class="ctag">MBA</span><span class="ctag">PGDCA</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+        <div class="card" data-modal="certs">
+          <span class="card-ico">🏅</span>
+          <div class="card-tag">05 · Credentials</div>
+          <div class="card-t">Certifications</div>
+          <div class="card-d">CPM · PRINCE2 · Scrum Master · Power BI · Business Analysis — certified in project governance, agile delivery, and data analytics. Far beyond a typical BDM.</div>
+          <div class="card-tags"><span class="ctag">PRINCE2</span><span class="ctag">CPM</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+        <div class="card" data-modal="cover">
+          <span class="card-ico">✉️</span>
+          <div class="card-tag">06 · Letter</div>
+          <div class="card-t">Cover Letter</div>
+          <div class="card-d">A direct, compelling letter to hiring managers about my leadership philosophy, key achievements, and the measurable value I bring from day one.</div>
+          <div class="card-tags"><span class="ctag">Leadership Story</span><span class="ctag">Ready Now</span></div>
+          <div class="card-arr">→</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: WHY HIRE ME ══════ -->
+<div class="overlay" id="modal-why">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">🎯</div><div><span class="mh-ey">The Case for Aparajita</span><div class="mh-ti">Why Hire Me</div></div></div>
+      <button class="m-close" data-close="why">✕</button>
+    </div>
+    <div class="mb">
+      <p>Here are <strong>10 evidence-backed, outcome-focused reasons</strong> why I am the right choice for any high-performance IT or software company — grounded in real results, real leadership, and real delivery.</p>
+      <div class="wgrid">
+        <div class="wi"><div class="wnum">01</div><span class="wico">👥</span><h4>I Lead Cross-Functional Teams</h4><p>I directly lead UI/UX designers, developers, QA engineers, and DevOps across live projects — setting sprint goals, unblocking teams, running delivery reviews, and driving full accountability. I bring the leadership that keeps complex, multi-function delivery on track without hand-holding.</p></div>
+        <div class="wi"><div class="wnum">02</div><span class="wico">📊</span><h4>Proven Revenue — Real Numbers</h4><p>At Getepay: <strong>+50% institutional client acquisition growth</strong> and <strong>+40% upsell/cross-sell revenue</strong>. These are real commercial results from disciplined pipeline management, strategic account expansion, and C-suite relationship building — not projections.</p></div>
+        <div class="wi"><div class="wnum">03</div><span class="wico">🎯</span><h4>I Own the Outcome, Not Just the Brief</h4><p>I manage the <strong>complete lifecycle</strong> — from first discovery call, through requirements, sprint coordination, milestone tracking, and post-launch support. Clients always have one accountable leader. Companies get fewer escalations, higher satisfaction, and better retention.</p></div>
+        <div class="wi"><div class="wnum">04</div><span class="wico">⚡</span><h4>Large-Scale Execution Under Pressure</h4><p>Led onboarding of <strong>1.5 lakh+ merchant QR codes and POS devices across 4,000 branches in 8 months</strong> — coordinating multi-vendor field teams, maintaining quality at scale, and hitting every timeline milestone across geographies.</p></div>
+        <div class="wi"><div class="wnum">05</div><span class="wico">🔄</span><h4>Business + Technical Fluency</h4><p>I speak both boardroom and engineering. Deep understanding of <strong>SDLC, Agile/Scrum, mobile/web app ecosystems, and SaaS delivery</strong> means I translate business requirements into specifications developers can actually build — eliminating the costly "lost in translation" problem.</p></div>
+        <div class="wi"><div class="wnum">06</div><span class="wico">🤝</span><h4>Enterprise Stakeholder Management</h4><p>Closed and managed deals with C-suite at <strong>UCO Bank, Axis Bank, ICICI Bank, Bandhan Bank</strong>, and 7+ cooperative banks. I navigate institutional decision-making, build trust fast, and convert contacts into long-term, revenue-generating partnerships.</p></div>
+        <div class="wi"><div class="wnum">07</div><span class="wico">🌐</span><h4>Multi-Domain Adaptability</h4><p>Delivered across <strong>fintech, banking, healthcare, cloud kitchens, real-time services, and bulk logistics</strong>. I adapt my consultative approach and solution framing to any industry — making me effective across any client portfolio without losing momentum.</p></div>
+        <div class="wi"><div class="wnum">08</div><span class="wico">🏅</span><h4>Certified — Not Just Experienced</h4><p><strong>CPM · PRINCE2 · Scrum Master · Power BI · Business Analysis</strong> — I bring structured governance, agile delivery, and data analytics certification to every engagement. My project leadership is backed by credentials, not just confidence.</p></div>
+        <div class="wi"><div class="wnum">09</div><span class="wico">📈</span><h4>Data-Driven and Analytically Sharp</h4><p>Certified in <strong>Power BI and Advanced Excel</strong>. I track pipeline conversion, milestone adherence, account health, and revenue forecasts — making strategic decisions with evidence and reporting performance clearly to all stakeholders, from the team to the boardroom.</p></div>
+        <div class="wi"><div class="wnum">10</div><span class="wico">💎</span><h4>Partnerships That Compound Over Time</h4><p>Great business development is indistinguishable from great consulting. I solve real problems, deliver on every commitment, and stay engaged post-launch — turning one-time clients into <strong>long-term partners who renew, expand, and actively refer new business</strong> year after year.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: EXPERIENCE ══════ -->
+<div class="overlay" id="modal-exp">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">💼</div><div><span class="mh-ey">Career Journey</span><div class="mh-ti">Professional Experience</div></div></div>
+      <button class="m-close" data-close="exp">✕</button>
+    </div>
+    <div class="mb">
+      <p><strong>3+ years of full professional experience</strong> in IT services and fintech — leading cross-functional delivery teams, managing enterprise accounts across 30+ banking institutions, and generating measurable, compounding revenue growth.</p>
+
+      <div class="jb">
+        <div class="jbadge">✦ Full-Time Professional Role</div>
+        <div class="jdate">Dec 2025 — Present &nbsp;·&nbsp; Chennai, Tamil Nadu</div>
+        <h4>Senior Business Development Manager</h4>
+        <div class="jco">Team Tweaks Technology — Mobile &amp; Web App Development Company</div>
+        <p>Leading business development and cross-functional project delivery. I bring in the business <em>and</em> lead the team that delivers it — serving as the central leader connecting client vision, commercial outcomes, and technical execution.</p>
+        <ul>
+          <li><strong>Leading cross-functional delivery teams</strong> comprising UI/UX designers, frontend &amp; backend developers, QA engineers, and DevOps — setting sprint goals, resolving team blockers, conducting delivery reviews, and driving accountability across every function.</li>
+          <li>Driving the full business development lifecycle: lead generation, consultative discovery, solution scoping, proposal presentation, commercial negotiation, and deal closure.</li>
+          <li>Owning post-sales project delivery: milestone planning, risk management, change request governance, and client communication from project kickoff to post-launch support.</li>
+          <li>Acting as strategic consultant to clients — translating complex business goals into clear, technically feasible product roadmaps that engineering teams execute with precision.</li>
+          <li>Serving as the single accountable leader between clients and all internal teams — maintaining full transparency on scope, timeline, and budget throughout every engagement.</li>
+          <li>Building long-term client relationships that result in repeat projects, referrals, and expanded commercial engagements.</li>
+        </ul>
+        <div class="ptable">
+          <div class="prow"><div class="pname">🍽 Mealhood</div><div class="pdesc">Multi-vendor cloud kitchen delivery app — led full cross-functional team from requirements mapping through final deployment.</div></div>
+          <div class="prow"><div class="pname">🌐 Hanioo</div><div class="pdesc">Real-time interpreter booking platform — managed team delivery, solution architecture alignment, and phased milestone execution.</div></div>
+          <div class="prow"><div class="pname">🛒 BAFL</div><div class="pdesc">Bulk grocery delivery app — coordinated entire team lifecycle from commercial scoping to go-live release.</div></div>
+          <div class="prow"><div class="pname">🏥 Blumberr</div><div class="pdesc">Compliance-sensitive healthcare app — led regulatory discussions, team briefings, and end-to-end project governance.</div></div>
+        </div>
+        <div class="jtags"><span class="jtag">Team Leadership</span><span class="jtag">4 Apps Delivered</span><span class="jtag">Cross-Functional Mgmt</span><span class="jtag">Full Delivery Ownership</span></div>
+      </div>
+
+      <div class="jb">
+        <div class="jbadge">✦ Full-Time Professional Role</div>
+        <div class="jdate">Jun 2023 — Nov 2025 &nbsp;·&nbsp; India &nbsp;·&nbsp; 2 Years 6 Months</div>
+        <h4>Relationship Manager — Enterprise &amp; Institutional Sales</h4>
+        <div class="jco">Getepay.in — Fintech Payment Solutions</div>
+        <p>Managed a high-value portfolio of 30+ institutional banking clients across nationalized, private, and cooperative banks. Led implementation coordination teams, drove enterprise fintech solution adoption, and generated compounding revenue growth for the organization.</p>
+        <ul>
+          <li>Drove a <strong>50% increase in institutional client acquisition</strong> through strategic enterprise-level fintech solution sales across multiple banking categories.</li>
+          <li>Grew upsell and cross-sell revenues by <strong>40%</strong> — identifying expansion opportunities and leading commercial negotiations with senior banking decision-makers.</li>
+          <li><strong>Led on-ground coordination teams</strong> to onboard <strong>1.5 lakh+ merchant QR codes and POS devices across 4,000 bank branches in 8 months</strong> — managing field teams, vendor partners, and timeline adherence at scale.</li>
+          <li>Managed strategic partnerships with UCO Bank, Bandhan Bank, Axis Bank, ICICI Bank, Assam State Cooperative Bank, Gauhati Urban Cooperative Bank, Shillong Urban Cooperative Bank, Nalbari Urban Cooperative Bank, Industrial Cooperative Bank, and Meghalaya State Cooperative Bank.</li>
+          <li>Conducted C-suite and senior-level product presentations, technical consultations, and stakeholder alignment sessions to position digital payment solutions for large-scale institutional deployment.</li>
+          <li>Owned the complete client engagement lifecycle: lead generation → commercial discussions → solution onboarding → implementation coordination → post-deployment account management.</li>
+        </ul>
+        <div class="ptable">
+          <div class="prow"><div class="pname">🏦 UCO Bank</div><div class="pdesc">End-to-end digital payment deployment and merchant onboarding program across a major nationalized institution.</div></div>
+          <div class="prow"><div class="pname">⚙️ GSI Project</div><div class="pdesc">Fintech solution implementation aligned with institutional compliance standards and operational requirements.</div></div>
+          <div class="prow"><div class="pname">🎪 Bali Yatra</div><div class="pdesc">Large-scale event-based digital payment rollout — led real-time team coordination under high-volume conditions.</div></div>
+        </div>
+        <div class="jtags"><span class="jtag">+50% Client Growth</span><span class="jtag">+40% Revenue</span><span class="jtag">30+ Banking Clients</span><span class="jtag">1.5L+ Merchants</span><span class="jtag">Team Coordination Lead</span></div>
+      </div>
+
+      <h3>Early Career — Internships</h3>
+      <p>Prior to my professional career, I completed internships that built my foundational skills in HR, recruitment, and sales — shaping the communication, people management, and commercial instincts I apply today.</p>
+
+      <div class="jb">
+        <div class="jbadge ibadge">◈ Internship</div>
+        <div class="jdate">Jul 2022 — Aug 2022 &nbsp;·&nbsp; Guwahati, Assam</div>
+        <h4>Human Resources Intern</h4>
+        <div class="jco">State Institute of Panchayat and Rural Development (SIPRD)</div>
+        <ul>
+          <li>Assisted in data collection and HR analysis for rural Panchayat raj institutions, supporting government compliance and policy programs.</li>
+          <li>Supported training and development sessions and helped resolve institutional conflict situations through structured frameworks.</li>
+        </ul>
+      </div>
+
+      <div class="jb">
+        <div class="jbadge ibadge">◈ Internship</div>
+        <div class="jdate">Mar 2022 — Jun 2022 &nbsp;·&nbsp; Mumbai, Maharashtra</div>
+        <h4>Recruitment Intern</h4>
+        <div class="jco">SolutionGraph</div>
+        <ul>
+          <li>Sourced, screened, and shortlisted candidates across technical and non-technical roles through multi-channel strategies.</li>
+          <li>Coordinated multi-round interview scheduling and maintained candidate tracking systems throughout the recruitment lifecycle.</li>
+        </ul>
+      </div>
+
+      <div class="jb">
+        <div class="jbadge ibadge">◈ Internship</div>
+        <div class="jdate">Jul 2019 — Aug 2019 &nbsp;·&nbsp; Guwahati, Assam</div>
+        <h4>Sales Intern</h4>
+        <div class="jco">Aditya Birla Fashion and Retail — Pantaloons</div>
+        <ul>
+          <li>Contributed to <strong>30% of in-store sales</strong> during the internship period through customer engagement, persuasion, and POS-based selling — demonstrating early commercial instinct.</li>
+          <li>Gained hands-on experience in visual merchandising, inventory management, and retail brand representation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: SKILLS ══════ -->
+<div class="overlay" id="modal-skills">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">⚡</div><div><span class="mh-ey">Competency Matrix</span><div class="mh-ti">Skills &amp; Expertise</div></div></div>
+      <button class="m-close" data-close="skills">✕</button>
+    </div>
+    <div class="mb">
+      <p>A comprehensive blend of <strong>people leadership, commercial, and technical competencies</strong>. I don't just work within a team — I lead one. From strategy and enterprise sales to delivery governance and team motivation, I bring end-to-end capability.</p>
+      <h3>Core Professional Competencies</h3>
+      <div class="sbar"><div class="sbt"><span>Cross-Functional Team Leadership &amp; Management</span><span class="sbp">94%</span></div><div class="sbtr"><div class="sbf" style="width:94%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>Stakeholder &amp; Key Account Management</span><span class="sbp">95%</span></div><div class="sbtr"><div class="sbf" style="width:95%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>Business Development &amp; Enterprise Sales</span><span class="sbp">92%</span></div><div class="sbtr"><div class="sbf" style="width:92%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>End-to-End Project Management &amp; Delivery</span><span class="sbp">90%</span></div><div class="sbtr"><div class="sbf" style="width:90%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>Requirement Gathering, Scoping &amp; Solution Design</span><span class="sbp">88%</span></div><div class="sbtr"><div class="sbf" style="width:88%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>SDLC &amp; Agile / Scrum Delivery</span><span class="sbp">85%</span></div><div class="sbtr"><div class="sbf" style="width:85%"></div></div></div>
+      <div class="sbar"><div class="sbt"><span>Power BI &amp; Data Analytics</span><span class="sbp">82%</span></div><div class="sbtr"><div class="sbf" style="width:82%"></div></div></div>
+      <h3>Leadership &amp; Team Management</h3>
+      <p>Experienced in leading multi-disciplinary delivery teams — setting clear goals, running sprint planning and reviews, resolving cross-team conflicts, tracking performance, and keeping team morale high through complex delivery cycles. I lead with clarity, empathy, and full accountability for outcomes.</p>
+      <div class="ccloud">
+        <div class="ch">Cross-Functional Team Leadership</div><div class="ch">Sprint Planning &amp; Reviews</div><div class="ch">Team Motivation &amp; Morale</div><div class="ch">Conflict Resolution</div><div class="ch">Delivery Governance</div><div class="ch">Risk &amp; Escalation Management</div><div class="ch">Executive Stakeholder Alignment</div><div class="ch">Performance Tracking</div>
+      </div>
+      <h3>Tools &amp; Technologies</h3>
+      <div class="ccloud">
+        <div class="ch">Power BI</div><div class="ch">Advanced Excel</div><div class="ch">Python (Basic)</div><div class="ch">CRM Systems</div><div class="ch">JIRA / Project Tools</div><div class="ch">SaaS Platforms</div><div class="ch">Digital Payment Systems</div><div class="ch">Mobile App Ecosystems</div><div class="ch">POS &amp; QR Technologies</div><div class="ch">MS Office Suite</div><div class="ch">API Basics</div>
+      </div>
+      <h3>Commercial &amp; Soft Skills</h3>
+      <div class="ccloud">
+        <div class="ch">Consultative Selling</div><div class="ch">Negotiation &amp; Persuasion</div><div class="ch">Pipeline Management</div><div class="ch">Proposal &amp; RFP Writing</div><div class="ch">Revenue Forecasting</div><div class="ch">Go-To-Market Strategy</div><div class="ch">Client Onboarding</div><div class="ch">Change Management</div><div class="ch">Executive Presence</div><div class="ch">Strategic Thinking</div><div class="ch">Deadline Discipline</div><div class="ch">Active Listening</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: EDUCATION ══════ -->
+<div class="overlay" id="modal-edu">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">🎓</div><div><span class="mh-ey">Academic Qualifications</span><div class="mh-ti">Education</div></div></div>
+      <button class="m-close" data-close="edu">✕</button>
+    </div>
+    <div class="mb">
+      <p>A strong academic foundation blending <strong>business strategy, human resources management, and computer applications</strong> — purpose-built for the intersection of technology and commerce where I operate every day.</p>
+      <div class="ec"><span class="ecy">Nov 2021 — Nov 2023</span><h4>Master of Business Administration (MBA)</h4><p>Gauhati Commerce College, Guwahati, Assam<br><br>Specialization in Business Strategy, Operations Management, and Organizational Leadership. Advanced skills in strategic decision-making, financial analysis, marketing management, and organizational behavior — providing the intellectual foundation that directly powers my BDM, key account management, and project leadership approach today.</p></div>
+      <div class="ec"><span class="ecy">May 2022 — May 2023</span><h4>PG Diploma in Computer Applications (PGDCA)</h4><p>CEC — Computer Education Center<br><br>Computer &amp; Information Sciences, Systems Support and Application Development. Built the technical literacy to communicate credibly with engineering teams, evaluate technical feasibility, and bridge the gap between business requirements and implementation — a decisive advantage for any IT-facing BDM or project manager role.</p></div>
+      <div class="ec"><span class="ecy">2017 — 2020</span><h4>Bachelor of Business Administration (BBA)</h4><p>Gauhati Commerce College, Guwahati, Assam<br><br>Specialization in Human Resources Management &amp; General Administration. Developed core people management, communication, and organizational skills — the foundation of the cross-functional team leadership approach I bring to every role today.</p></div>
+      <div class="ec"><span class="ecy">Ongoing</span><h4>Continuous Professional Development</h4><p>Actively upskilling in product management frameworks, SaaS growth strategies, and AI-enabled business development tools. Committed to staying at the frontier of commercial and technical best practices — because great leaders never stop learning.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: CERTIFICATIONS ══════ -->
+<div class="overlay" id="modal-certs">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">🏅</div><div><span class="mh-ey">Professional Credentials</span><div class="mh-ti">Certifications</div></div></div>
+      <button class="m-close" data-close="certs">✕</button>
+    </div>
+    <div class="mb">
+      <p>A carefully built portfolio of <strong>industry-recognized certifications</strong> that validate my project leadership, agile delivery, data analytics, and business analysis capabilities — credentials that go well beyond what a typical BDM or account management candidate carries.</p>
+      <div class="ci"><span class="cico">🏆</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">Certified Project Professional (CPM)</strong><span class="ci-text">Validates professional-grade project management across planning, execution, risk governance, stakeholder management, and delivery closure. Proves that my project leadership is structured, certified, and accountable — not improvised.</span></div></div>
+      <div class="ci"><span class="cico">📋</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">PRINCE2 Basic — Project Management</strong><span class="ci-text">A globally recognized structured project management methodology. Equips me with formal processes for initiating, managing, and closing projects within defined quality, timeline, and commercial parameters — critical for managing enterprise expectations in IT delivery.</span></div></div>
+      <div class="ci"><span class="cico">🔄</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">Scrum Master Certification</strong><span class="ci-text">Certified in Agile/Scrum — leading cross-functional teams through iterative delivery, sprint planning and reviews, backlog management, and continuous improvement. I use Scrum not just as a process but as a team leadership philosophy that builds velocity and trust.</span></div></div>
+      <div class="ci"><span class="cico">📊</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">Power BI — Microsoft</strong><span class="ci-text">Proficient in building interactive dashboards, real-time data visualizations, and executive performance reports covering pipeline metrics, delivery milestones, client health, and revenue forecasts. Data visibility is a leadership superpower — I use it daily.</span></div></div>
+      <div class="ci"><span class="cico">🔍</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">Business Analysis Professional</strong><span class="ci-text">Skilled in requirements elicitation, stakeholder analysis, process modeling, and gap analysis — translating complex business needs into clear, actionable specifications that delivery teams can execute immediately. The difference between project success and drift starts here.</span></div></div>
+      <div class="ci"><span class="cico">🧮</span><div><strong style="color:var(--white);font-size:14px;display:block;margin-bottom:3px">OM Excel Workshop (Advanced)</strong><span class="ci-text">Advanced Excel in pivot tables, VLOOKUP/XLOOKUP, financial modeling, scenario analysis, and workflow automation — enabling precision commercial reporting and data-driven account management without dependency on separate analytics support.</span></div></div>
+      <h3>The Bottom Line</h3>
+      <p>Hire me for BD and get a <strong>certified project leader, account strategist, and delivery manager in one person</strong>. Most Business Development Managers bring sales experience alone. I bring a full, certified leadership and delivery toolkit — and I know how to use it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ MODAL: COVER LETTER ══════ -->
+<div class="overlay" id="modal-cover">
+  <div class="modal">
+    <div class="mh">
+      <div class="mh-left"><div class="mh-ico">✉️</div><div><span class="mh-ey">To the Hiring Team</span><div class="mh-ti">Cover Letter</div></div></div>
+      <button class="m-close" data-close="cover">✕</button>
+    </div>
+    <div class="mb">
+      <div class="cvbox">
+        <p>Dear Hiring Manager,</p>
+        <p>I am writing to express my strong interest in a <strong>Senior Business Development Manager, Key Account Manager, or Project Manager / Coordinator</strong> role at your organization. With 3+ years of professional experience in IT services and fintech — leading cross-functional delivery teams, managing enterprise banking accounts, and driving measurable revenue growth — I bring the rare combination of commercial leadership and operational execution that high-performing software companies truly need.</p>
+        <p>What distinguishes me is not just my ability to generate new business — it is my track record of <strong>leading teams and owning outcomes end-to-end</strong>. At Team Tweaks Technology, I lead cross-functional teams of UI/UX designers, developers, QA engineers, and DevOps specialists across multiple simultaneous live projects. I run sprint planning, unblock delivery teams, manage client expectations, and ensure every milestone is met — because I take full ownership of the result, not just the brief. At Getepay, I grew institutional client acquisition by <strong>50%</strong> and expanded account revenue by <strong>40%</strong>, while simultaneously coordinating field teams that onboarded <strong>over 1.5 lakh merchant QR codes and POS devices across 4,000 branches in just 8 months</strong>.</p>
+        <p>I hold an <strong>MBA, a PG Diploma in Computer Applications</strong>, and professional certifications in PRINCE2, Scrum Master, Certified Project Professional (CPM), and Power BI. I can communicate credibly at the boardroom level, translate strategy into delivery plans, and lead the technical teams that execute them. I don't need hand-holding — I am the person who <strong>holds the team together</strong>.</p>
+        <p>I am actively looking for a role where I can <strong>lead a team, grow key accounts, and drive project outcomes at scale</strong>. I thrive in fast-paced, high-accountability environments where clarity and ownership are non-negotiable. I am ready to add measurable, compounding value from day one.</p>
+        <p>Thank you sincerely for your time. I very much look forward to the conversation.</p>
+        <div class="cvsig">Aparajita Deb</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── All modal IDs mapped ──
+const MODALS = ['why','exp','skills','edu','certs','cover'];
+
+// Open modal by ID
+function showModal(id) {
+  var el = document.getElementById('modal-' + id);
+  if (!el) return;
+  el.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  el.querySelector('.modal').scrollTop = 0;
+}
+
+// Close modal by ID
+function hideModal(id) {
+  var el = document.getElementById('modal-' + id);
+  if (!el) return;
+  el.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Wire up cards — use data-modal attribute
+document.querySelectorAll('.card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var id = card.getAttribute('data-modal');
+    if (id) showModal(id);
+  });
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      var id = card.getAttribute('data-modal');
+      if (id) showModal(id);
+    }
+  });
+});
+
+// Wire up close buttons — use data-close attribute
+document.querySelectorAll('.m-close').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var id = btn.getAttribute('data-close');
+    if (id) hideModal(id);
+  });
+});
+
+// Click backdrop to close
+MODALS.forEach(function(id) {
+  var overlay = document.getElementById('modal-' + id);
+  if (!overlay) return;
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) hideModal(id);
+  });
+});
+
+// Escape key closes all
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    MODALS.forEach(function(id) { hideModal(id); });
+  }
+});
+</script>
+</body>
+</html>
